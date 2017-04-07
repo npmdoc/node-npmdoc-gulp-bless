@@ -1,0 +1,109 @@
+# api documentation for  [gulp-bless (v3.2.1)](http://github.com/BlessCSS/gulp-bless)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-bless.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-bless) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-bless.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-bless)
+#### CSS post-processor which splits CSS files suitably for Internet Explorer < 10. Bless + Gulp = gulp-bless.
+
+[![NPM](https://nodei.co/npm/gulp-bless.png?downloads=true)](https://www.npmjs.com/package/gulp-bless)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-gulp-bless_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/apidoc.html)
+
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/screenCapture.npmPackageDependencyTree.svg)
+
+
+
+# package.json
+
+```json
+
+{
+    "author": {
+        "name": "Adam Lynch",
+        "email": "adam@teamwork.com"
+    },
+    "bugs": {
+        "url": "http://github.com/BlessCSS/gulp-bless/issues"
+    },
+    "dependencies": {
+        "bless": "^4.0.0",
+        "gulp-util": "*",
+        "lodash.isfunction": "^3.0.8",
+        "lodash.isstring": "^4.0.1",
+        "lodash.isundefined": "^3.0.1",
+        "merge": "~1.2.0",
+        "through2": "~0.5.1",
+        "vinyl-sourcemaps-apply": "^0.2.1"
+    },
+    "description": "CSS post-processor which splits CSS files suitably for Internet Explorer < 10. Bless + Gulp = gulp-bless.",
+    "devDependencies": {
+        "gulp": "*",
+        "gulp-clean-css": "^2.3.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-coverage": "~0.1.24",
+        "gulp-each": "^0.2.0",
+        "gulp-load-plugins": "^1.2.0",
+        "gulp-mocha": "*",
+        "gulp-rename": "^1.2.2",
+        "gulp-sourcemaps": "^1.6.0",
+        "proxyquire": "~1.0.1",
+        "should": "*",
+        "stream-assert": "^2.0.3"
+    },
+    "directories": {},
+    "dist": {
+        "shasum": "c779e164ef9e196ee7f4732321139d4e805778d6",
+        "tarball": "https://registry.npmjs.org/gulp-bless/-/gulp-bless-3.2.1.tgz"
+    },
+    "engines": {
+        "node": ">=0.9"
+    },
+    "gitHead": "5a20168c6e35c75f05928f09eceb2d82de2e91b3",
+    "homepage": "http://github.com/BlessCSS/gulp-bless",
+    "keywords": [
+        "gulpplugin",
+        "css",
+        "postprocessor",
+        "preprocessor",
+        "split",
+        "internet explorer",
+        "bless"
+    ],
+    "license": "MIT",
+    "main": "./index.js",
+    "maintainers": [
+        {
+            "name": "adam-lynch",
+            "email": "contact@adamlynch.ie"
+        },
+        {
+            "name": "alvinlin123",
+            "email": "alvinlin123+npm@gmail.com"
+        }
+    ],
+    "name": "gulp-bless",
+    "optionalDependencies": {},
+    "readme": "ERROR: No README data found!",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/BlessCSS/gulp-bless.git"
+    },
+    "scripts": {
+        "test": "gulp test"
+    },
+    "version": "3.2.1"
+}
+```
+
+
+
+# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
+
+#### [module gulp-bless](#apidoc.module.gulp-bless)
+
+
+
+# <a name="apidoc.module.gulp-bless"></a>[module gulp-bless](#apidoc.module.gulp-bless)
+
+
+
+# misc
+- this document was created with [utility2](https://github.com/kaizhu256/node-utility2)
