@@ -1,9 +1,14 @@
-# api documentation for  [gulp-bless (v3.2.1)](http://github.com/BlessCSS/gulp-bless)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-bless.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-bless) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-bless.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-bless)
+# npmdoc-gulp-bless
+
+#### api documentation for  [gulp-bless (v3.2.1)](http://github.com/BlessCSS/gulp-bless)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-bless.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-bless) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-bless.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-bless)
+
 #### CSS post-processor which splits CSS files suitably for Internet Explorer < 10. Bless + Gulp = gulp-bless.
 
-[![NPM](https://nodei.co/npm/gulp-bless.png?downloads=true)](https://www.npmjs.com/package/gulp-bless)
+[![NPM](https://nodei.co/npm/gulp-bless.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gulp-bless)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-gulp-bless_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-gulp-bless/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-gulp-bless/build/screenCapture.npmPackageListing.svg)
 
@@ -17,8 +22,7 @@
 
 {
     "author": {
-        "name": "Adam Lynch",
-        "email": "adam@teamwork.com"
+        "name": "Adam Lynch"
     },
     "bugs": {
         "url": "http://github.com/BlessCSS/gulp-bless/issues"
@@ -71,17 +75,14 @@
     "main": "./index.js",
     "maintainers": [
         {
-            "name": "adam-lynch",
-            "email": "contact@adamlynch.ie"
+            "name": "adam-lynch"
         },
         {
-            "name": "alvinlin123",
-            "email": "alvinlin123+npm@gmail.com"
+            "name": "alvinlin123"
         }
     ],
     "name": "gulp-bless",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/BlessCSS/gulp-bless.git"
@@ -92,16 +93,6 @@
     "version": "3.2.1"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module gulp-bless](#apidoc.module.gulp-bless)
-
-
-
-# <a name="apidoc.module.gulp-bless"></a>[module gulp-bless](#apidoc.module.gulp-bless)
 
 
 
