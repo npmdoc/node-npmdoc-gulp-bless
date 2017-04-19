@@ -61,12 +61,144 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-bless">module gulp-bless</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-bless.gulp-bless">
+            function <span class="apidocSignatureSpan"></span>gulp-bless
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.gulp-bless" id="apidoc.module.gulp-bless">module gulp-bless</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-bless.gulp-bless" id="apidoc.element.gulp-bless.gulp-bless">
+        function <span class="apidocSignatureSpan"></span>gulp-bless
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">gulp-bless = function (options){
+    var pluginName = &#x27;gulp-bless&#x27;;
+    options = options || {};
+    options.imports = options.imports === undefined ? true : options.imports;
+    options.cacheBuster = options.cacheBuster === undefined ? true : options.cacheBuster;
+    options.suffix = createSuffixFunction(options.suffix);
+
+    return through.obj(function(file, enc, cb) {
+        if (file.isNull()) return cb(null, file); // ignore
+        if (file.isStream()) return cb(new PluginError(pluginName,  &#x27;Streaming not supported&#x27;));
+
+        var stream = this;
+        var shouldCreateSourcemaps = file.sourceMap;
+
+        if (file.contents &#x26;&#x26; file.contents.toString()) {
+            var fileName = path.basename(file.path);
+            var outputFilePath = path.resolve(path.dirname(file.path), fileName);
+            var contents = file.contents.toString(&#x27;utf8&#x27;);
+
+
+            try {
+                var result = bless.chunk(contents, {
+                    source: outputFilePath,
+                    sourcemaps: shouldCreateSourcemaps
+                });
+            }
+            catch (err) {
+                return cb(new PluginError(pluginName,  err));
+            }
+
+            var numberOfSplits = result.data.length;
+
+
+            if (options.log) {
+                // print log message
+                var msg = &#x27;Found &#x27; + result.totalSelectorCount + &#x27; selector&#x27;;
+                if (result.data.length &#x3e; 1) {
+                    msg += &#x27;s, splitting into &#x27; + result.data.length + &#x27; blessedFiles.&#x27;;
+                } else {
+                    msg += &#x27;, not splitting.&#x27;;
+                }
+                gutil.log(msg);
+            }
+
+            var addSourcemap = function(fileToAddTo, blessOutputIndex) {
+                if(!shouldCreateSourcemaps) return fileToAddTo;
+
+                var map = result.maps[blessOutputIndex];
+                map.file = fileToAddTo.relative;
+                map.sources = [file.relative];
+                applySourcemap(fileToAddTo, map);
+
+                return fileToAddTo;
+            };
+
+
+            // get out early if the file isn&#x27;t long enough
+            if(result.data.length === 1){
+                return cb(null, addSourcemap(new File({
+                    cwd: file.cwd,
+                    base: file.base,
+                    path: outputFilePath,
+                    contents: new Buffer(result.data[0])
+                }), 0));
+            }
+
+
+            var outputPathStart = path.dirname(outputFilePath);
+            var outputExtension = path.extname(outputFilePath);
+            var outputBasename = path.basename(outputFilePath, outputExtension);
+
+            var createBlessedFileName = function(index){
+                return outputBasename + options.suffix(index) + outputExtension;
+            };
+
+            var addImports = function(index, contents){
+                // only the first file should have @imports
+                if(!options.imports || index){
+                  return contents;
+                }
+
+                var imports = &#x27;&#x27;;
+                var parameters = options.cacheBuster ? &#x27;?z=&#x27; + Math.round((Math.random() * 999)) : &#x27;&#x27;;
+                for (var i = 1; i &#x3c; numberOfSplits; i++) {
+                    imports += &#x22;@import url(&#x27;&#x22; + createBlessedFileName(i) + parameters + &#x22;&#x27;);\n\n&#x22;;
+                }
+
+                return imports + contents;
+            };
+
+
+            var outputFiles = [];
+            for(var j = numberOfSplits - 1; j &#x3e;= 0; j--) {
+                var newIndex = numberOfSplits - 1 - j;
+                var outputPath = newIndex
+                    ? path.resolve(path.join(outputPathStart, createBlessedFileName(newIndex)))
+                    : outputFilePath;
+
+                outputFiles[newIndex] = addSourcemap(new File({
+                    cwd: file.cwd,
+                    base: file.base,
+                    path: outputPath,
+                    contents: new Buffer(addImports(newIndex, result.data[j]))
+                }), j);
+            }
+
+
+            for(var k = 0; k &#x3c; numberOfSplits; k++){
+                stream.push(outputFiles[k]);
+            }
+            c ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 

@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://github.com/BlessCSS/gulp-bless"
-
-    >gulp-bless (v3.2.1)</a>
+    <a href="http://github.com/BlessCSS/gulp-bless">gulp-bless (v3.2.1)</a>
 </h1>
-<h4>CSS post-processor which splits CSS files suitably for Internet Explorer < 10. Bless + Gulp = gulp-bless.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<h4>CSS post-processor which splits CSS files suitably for Internet Explorer &lt; 10. Bless + Gulp = gulp-bless.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-bless">module gulp-bless</a><ol>
 
@@ -86,7 +79,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">gulp-bless = function (options){
-    var pluginName = &#x27;gulp-bless&#x27;;
+    var pluginName = 'gulp-bless';
     options = options || {};
     options.imports = options.imports === undefined ? true : options.imports;
     options.cacheBuster = options.cacheBuster === undefined ? true : options.cacheBuster;
@@ -94,15 +87,15 @@
 
     return through.obj(function(file, enc, cb) {
         if (file.isNull()) return cb(null, file); // ignore
-        if (file.isStream()) return cb(new PluginError(pluginName,  &#x27;Streaming not supported&#x27;));
+        if (file.isStream()) return cb(new PluginError(pluginName,  'Streaming not supported'));
 
         var stream = this;
         var shouldCreateSourcemaps = file.sourceMap;
 
-        if (file.contents &#x26;&#x26; file.contents.toString()) {
+        if (file.contents &amp;&amp; file.contents.toString()) {
             var fileName = path.basename(file.path);
             var outputFilePath = path.resolve(path.dirname(file.path), fileName);
-            var contents = file.contents.toString(&#x27;utf8&#x27;);
+            var contents = file.contents.toString('utf8');
 
 
             try {
@@ -120,11 +113,11 @@
 
             if (options.log) {
                 // print log message
-                var msg = &#x27;Found &#x27; + result.totalSelectorCount + &#x27; selector&#x27;;
-                if (result.data.length &#x3e; 1) {
-                    msg += &#x27;s, splitting into &#x27; + result.data.length + &#x27; blessedFiles.&#x27;;
+                var msg = 'Found ' + result.totalSelectorCount + ' selector';
+                if (result.data.length &gt; 1) {
+                    msg += 's, splitting into ' + result.data.length + ' blessedFiles.';
                 } else {
-                    msg += &#x27;, not splitting.&#x27;;
+                    msg += ', not splitting.';
                 }
                 gutil.log(msg);
             }
@@ -141,7 +134,7 @@
             };
 
 
-            // get out early if the file isn&#x27;t long enough
+            // get out early if the file isn't long enough
             if(result.data.length === 1){
                 return cb(null, addSourcemap(new File({
                     cwd: file.cwd,
@@ -166,10 +159,10 @@
                   return contents;
                 }
 
-                var imports = &#x27;&#x27;;
-                var parameters = options.cacheBuster ? &#x27;?z=&#x27; + Math.round((Math.random() * 999)) : &#x27;&#x27;;
-                for (var i = 1; i &#x3c; numberOfSplits; i++) {
-                    imports += &#x22;@import url(&#x27;&#x22; + createBlessedFileName(i) + parameters + &#x22;&#x27;);\n\n&#x22;;
+                var imports = '';
+                var parameters = options.cacheBuster ? '?z=' + Math.round((Math.random() * 999)) : '';
+                for (var i = 1; i &lt; numberOfSplits; i++) {
+                    imports += "@import url('" + createBlessedFileName(i) + parameters + "');\n\n";
                 }
 
                 return imports + contents;
@@ -177,7 +170,7 @@
 
 
             var outputFiles = [];
-            for(var j = numberOfSplits - 1; j &#x3e;= 0; j--) {
+            for(var j = numberOfSplits - 1; j &gt;= 0; j--) {
                 var newIndex = numberOfSplits - 1 - j;
                 var outputPath = newIndex
                     ? path.resolve(path.join(outputPathStart, createBlessedFileName(newIndex)))
@@ -192,7 +185,7 @@
             }
 
 
-            for(var k = 0; k &#x3c; numberOfSplits; k++){
+            for(var k = 0; k &lt; numberOfSplits; k++){
                 stream.push(outputFiles[k]);
             }
             c ...</pre></li>
@@ -208,3 +201,4 @@
     ]
 </div>
 </div>
+</body></html>
